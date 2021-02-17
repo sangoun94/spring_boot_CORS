@@ -12,18 +12,20 @@ CORS는 다른 client에 Origin 정보가 달라도 (스키마, hostname, port)
 
 WebConfig implements WebMvcConfiguration 에서
 
- @Override
+     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")      // 모든 mapping(주소- /hello)에 8070의 ajax가 나온다.
                 .allowedOrigins("http://localhost:8070");
     }
+
 이것을 사용하도록 하자.
 
 
 
 
 @CrossOrigin도 가능하다.  그치만 한 곳에서 config해준게 좋기에 상단의 내용이 더 좋아보인다.
-    @CrossOrigin(origins="http://localhost:8070")    ==> /hello 맵핑된 hello를 반환한다.
+
+    @CrossOrigin(origins="http://localhost:8070")     //hello 맵핑된 hello를 반환한다.
 	@GetMapping("/hello")
 	public String hello(){
 		return "hello";
